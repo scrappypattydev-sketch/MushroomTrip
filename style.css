@@ -1,0 +1,1312 @@
+@font-face {
+    font-family: 'HighwayGothic';
+    src: url('fonts/HighwayGothic-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Layout base e sfondo globale */
+html,
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-family: 'HighwayGothic', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient( 135deg, rgba(26, 0, 51, 0.7), rgba(51, 0, 102, 0.7), rgba(102, 0, 204, 0.7), rgba(204, 0, 255, 0.7) ), url('https://i.postimg.cc/kXdzSZqs/Sfondo.png');
+    background-size: cover, 400% 400%;
+    background-attachment: fixed;
+    animation: psychedelicBg 60s ease infinite;
+    color: #fff;
+    scroll-behavior: smooth;
+    cursor: url('https://cdn-icons-png.flaticon.com/32/260/260205.png'), auto;
+    font-size: 18px;
+}
+
+a,
+button,
+.card {
+    cursor: url('https://cdn-icons-png.flaticon.com/32/260/260205.png'), pointer;
+}
+
+/* Canvas particelle sempre full-screen */
+#tsparticles {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Sezioni contenuto */
+section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+    font-size: 1.15rem;
+}
+
+h2 {
+    color: orange;
+    font-size: calc(2.5rem + 5px);
+    margin-bottom: 0.2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    align-items: start; /* 👈 ognuna mantiene la propria altezza */
+}
+
+
+.card {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1.8rem;
+    border-radius: 12px;
+    border-left: 5px solid #ff00cc;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1.15rem;
+}
+
+    .card:hover {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 0 30px #ff00ccaa, 0 0 60px #cc00ffaa;
+    }
+
+/* CTA */
+.cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+    .cta a {
+        background: #ff00cc;
+        color: #fff;
+        padding: 1rem 2rem;
+        text-decoration: none;
+        border-radius: 8px;
+        display: inline-block;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 0 10px #ff00cc80;
+    }
+
+        .cta a:hover {
+            background: #cc00ff;
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #ff00ccaa, 0 0 45px #cc00ffaa;
+        }
+
+/* Footer */
+footer {
+    background: transparent;
+    text-align: center;
+    padding: 3rem 1rem;
+    font-size: clamp(0.8rem, 1.5vw, calc(0.9rem + 9px));
+    color: #aaa;
+    position: relative;
+    z-index: 2;
+}
+
+/* Hero */
+.hero-box {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    padding-left: clamp(1rem, 5vw, 4rem);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    transform: translateX(-5%);
+}
+
+.hero-banner {
+    /* niente più sfondo con PNG: usiamo solo il background globale della pagina */
+    background: transparent;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem 0 2rem 1rem; /* top, right, bottom, left */
+    overflow: hidden; /* importante per tagliare l'immagine che esce a destra */
+}
+
+/* Desktop / schermi grandi: immagine attaccata al bordo destro */
+.hero-illustration {
+    position: absolute;
+    right: 0;
+    top: 5%;
+    width: min(45vw, 768px); /* dimensione reattiva ma non enorme */
+    height: auto;
+    pointer-events: none; /* non blocca i click sui bottoni */
+    transform: translateX(0); /* ben visibile */
+}
+
+
+/* GIF sfondo */
+.bg-gif img {
+    position: absolute;
+    width: clamp(80px, 10vw, 200px);
+    opacity: 0.3;
+    animation: float 20s infinite ease-in-out;
+    z-index: 1;
+}
+
+.gif1 {
+    top: 10%;
+    left: 5%;
+}
+
+.gif2 {
+    top: 30%;
+    left: 70%;
+    animation-delay: 3s;
+}
+
+.gif3 {
+    top: 60%;
+    left: 5%;
+    animation-delay: 6s;
+}
+
+.gif4 {
+    top: 80%;
+    left: 80%;
+    animation-delay: 9s;
+}
+
+.gif5 {
+    top: 45%;
+    left: 40%;
+    animation-delay: 12s;
+}
+
+.gif6 {
+    top: 15%;
+    left: 85%;
+    animation-delay: 15s;
+}
+
+/* Animazioni di sfondo */
+@keyframes psychedelicBg {
+    0% {
+        background-position: center center, 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+
+    .hero-box {
+        transform: none;
+        padding-left: 1rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-illustration {
+        width: min(50vw, 480px); /* un filo più piccola */
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bg-gif,
+    .floating-phrase {
+        display: none !important;
+    }
+
+    .cta {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-box {
+        padding: 1rem;
+    }
+
+    .hero-illustration {
+        transform: translateX(110%); /* completamente fuori a destra */
+    }
+
+    .card {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    h2 {
+        color: orange;
+        font-size: calc(2.8rem + 5px);
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Modalità allucinazione */
+html.hallucination-active {
+    filter: hue-rotate(180deg);
+}
+
+/* Scia spore */
+.spore {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+    animation: fadeOut 0.6s forwards;
+    z-index: 5;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+}
+
+
+/* Pulsante allucinazione */
+#hallucination-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10001;
+    background: #ff00cc;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #cc00ff;
+    cursor: pointer;
+    font-family: 'HighwayGothic', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    max-width: 90vw;
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Video */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    margin-top: 2rem;
+    background: #000;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+    .video-container iframe,
+    .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+/* Card gameplay espandibili */
+.card.expandable {
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 2.8rem; /* un po' più spazio per freccia + testo */
+}
+
+    /* Etichetta "clicca per espandere" + freccia */
+    .card.expandable::after {
+        content: 'Clicca per espandere ⌄';
+        position: absolute;
+        left: 50%;
+        bottom: 0.6rem;
+        transform: translateX(-50%);
+        font-size: 0.85rem;
+        letter-spacing: 0.02em;
+        color: rgba(255, 255, 255, 0.7);
+        pointer-events: none;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    /* Quando la card è aperta, cambia testo e freccia */
+    .card.expandable.open::after {
+        content: 'Clicca per chiudere ⌃';
+        opacity: 0.95;
+    }
+
+/* Descrizione card */
+.card .card-desc {
+    display: none;
+    margin-top: 0.7rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #ddd;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 0.6rem;
+}
+
+/* Mostra descrizione quando la card ha la classe 'open' */
+.card.open .card-desc {
+    display: block;
+    animation: slideDown 0.3s ease-out;
+}
+
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ====== ROADMAP / TIMELINE ====== */
+
+#roadmap {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.roadmap-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: orange;
+    position: static;
+    background: transparent;
+}
+
+/* Riquadro che contiene tutta la timeline */
+.timeline-container {
+    position: relative;
+    padding: 2rem 1.5rem;
+    border-radius: 18px;
+    background: radial-gradient(circle at top left, rgba(255, 0, 204, 0.18), rgba(10, 0, 25, 0.95));
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 0, 204, 0.25);
+    overflow: hidden;
+}
+
+/* Wrapper scrollabile orizzontale (solo desktop) */
+.timeline-wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    padding-bottom: 0.75rem;
+}
+
+    /* scrollbar custom ma discreta */
+    .timeline-wrapper::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .timeline-wrapper::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .timeline-wrapper::-webkit-scrollbar-thumb {
+        background: rgba(255, 0, 204, 0.6);
+        border-radius: 999px;
+    }
+
+.timeline-wrapper {
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+}
+
+/* Rail di card */
+.timeline {
+    display: flex;
+    align-items: stretch;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 1.5rem;
+}
+
+    /* Singola “milestone card” */
+    .timeline li {
+        flex: 0 0 240px;
+        max-width: 260px;
+        background: rgba(15, 0, 30, 0.95);
+        border-radius: 14px;
+        padding: 1rem 1.2rem;
+        position: relative;
+        border: 1px solid rgba(255, 0, 204, 0.5);
+        box-shadow: 0 0 18px rgba(255, 0, 204, 0.15);
+        text-align: left;
+    }
+
+        /* Piccolo “segno” laterale */
+        .timeline li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 1.2rem;
+            width: 4px;
+            height: 18px;
+            border-radius: 0 999px 999px 0;
+            background: linear-gradient( to bottom, #ff00cc, #ffb347 );
+        }
+
+#roadmap .date {
+    display: inline-block;
+    font-weight: bold;
+    color: #ffb347;
+    margin-bottom: 0.4rem;
+    padding: 0.15rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(255, 184, 120, 0.12);
+    font-size: 1rem;
+}
+
+#roadmap .timeline p {
+    margin: 0.5rem 0 0;
+    line-height: 1.5;
+    font-size: 1.1rem;
+    color: #f3e9ff;
+}
+
+/* Frecce di navigazione ai lati (solo desktop) */
+.timeline-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border: 1px solid rgba(255, 0, 204, 0.7);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 12px rgba(255, 0, 204, 0.5);
+    backdrop-filter: blur(6px);
+    opacity: 0.9;
+}
+
+    .timeline-nav:hover {
+        opacity: 1;
+        transform: translateY(-50%) scale(1.05);
+    }
+
+    .timeline-nav.prev {
+        left: 0.5rem;
+    }
+
+    .timeline-nav.next {
+        right: 0.5rem;
+    }
+
+    .timeline-nav.disabled {
+        opacity: 0.25;
+        cursor: default;
+        box-shadow: none;
+    }
+
+/* MOBILE: card verticali, niente frecce, niente scroll orizzontale */
+@media (max-width: 768px) {
+    #roadmap {
+        padding: 3rem 1rem;
+    }
+
+    .timeline-container {
+        padding: 1.5rem 1rem;
+    }
+
+    .timeline-wrapper {
+        overflow-x: visible;
+        padding-bottom: 0;
+    }
+
+    .timeline {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+        .timeline li {
+            flex: 1 1 auto;
+            max-width: 100%;
+            width: 100%;
+        }
+
+    .timeline-nav {
+        display: none;
+    }
+}
+
+
+/* FAQ */
+#faq {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+    #faq h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+.faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    margin-bottom: 1rem;
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #fff;
+    text-align: left;
+    font-size: 1.1rem;
+    padding: 1rem 0;
+    cursor: pointer;
+    position: relative;
+}
+
+    .faq-question::after {
+        content: '+';
+        position: absolute;
+        right: 0;
+        top: 1rem;
+        font-size: 1.3rem;
+        transition: transform 0.3s;
+    }
+
+.faq-item.open .faq-question::after {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 0;
+}
+
+.faq-item.open .faq-answer {
+    padding: 0.5rem 0 1rem;
+    max-height: 200px;
+}
+
+.faq-answer p {
+    margin: 0;
+    color: #ddd;
+    line-height: 1.5;
+    font-size: 1.15rem;
+}
+
+/* Newsletter */
+#newsletter {
+    max-width: 600px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    text-align: center;
+    color: #fff;
+    font-size: 1.15rem;
+}
+
+    #newsletter h2 {
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        color: orange;
+    }
+
+    #newsletter p {
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+    }
+
+    #newsletter form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    #newsletter input[type="email"] {
+        flex: 1 1 250px;
+        padding: 0.8rem 1rem;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+    }
+
+    #newsletter button {
+        padding: 0.8rem 1.5rem;
+        border: none;
+        background: #ff00cc;
+        color: #fff;
+        font-size: 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+        #newsletter button:hover {
+            background: #cc00ff;
+        }
+
+    #newsletter .success-message {
+        display: none;
+        margin-top: 1rem;
+        color: #8f8;
+        font-weight: bold;
+    }
+
+    #newsletter.success .success-message {
+        display: block;
+    }
+
+    #newsletter.success form {
+        display: none;
+    }
+
+/* Accessibilità */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+/* Language switcher */
+.lang-switcher {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10002;
+}
+
+    .lang-switcher select {
+        background: rgba(0,0,0,0.6);
+        color: #fff;
+        border: none;
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        font-family: 'HighwayGothic', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        cursor: pointer;
+    }
+
+        .lang-switcher select:focus {
+            outline: 2px solid #ff00cc;
+        }
+
+/* Frasi fluttuanti (sussurri) */
+.floating-phrase {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-style: italic;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0;
+    animation: floatingPhrase 4s ease-out forwards;
+}
+
+@keyframes floatingPhrase {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+}
+
+#community {
+    text-align: center;
+}
+
+    #community p {
+        max-width: 700px;
+        margin: 0.5rem auto 1.5rem;
+        line-height: 1.6;
+        font-size: 1.15rem;
+    }
+
+/* GESTIONE TITOLI GLITCH */
+.glitch {
+    position: relative;
+    color: orange;
+    transition: color 0.3s ease;
+    text-shadow: none;
+}
+
+html.hallucination-active .glitch {
+    color: #ff00cc;
+    animation: glitch-constant 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+
+@keyframes glitch-constant {
+    0% {
+        transform: translate(0);
+        text-shadow: none;
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+        text-shadow: 2px 0 #00ffff, -2px 0 #ff00cc;
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+        text-shadow: 3px 0 #ff00cc, -3px 0 #00ffff;
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+        text-shadow: -2px 0 #00ffff, 2px 0 #ff00cc;
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+        text-shadow: 2px 0 #00ffff, -2px 0 #ff00cc;
+    }
+
+    100% {
+        transform: translate(0);
+        text-shadow: none;
+    }
+}
+
+/* Header */
+header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    padding: 1rem;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a0033;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff00cc;
+    border-radius: 5px;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #cc00ff;
+    }
+
+/* Effetti extra allucinazione */
+html.hallucination-active body {
+    animation: heavyTrip 5s infinite alternate ease-in-out;
+}
+
+@keyframes heavyTrip {
+    0% {
+        filter: hue-rotate(0deg) contrast(100%);
+    }
+
+    50% {
+        filter: hue-rotate(90deg) contrast(120%);
+    }
+
+    100% {
+        filter: hue-rotate(180deg) contrast(100%);
+    }
+}
+
+
+/* Immagini "liquide" durante l'allucinazione */
+html.hallucination-active img {
+    animation: liquid 3s infinite ease-in-out;
+}
+
+@keyframes liquid {
+    0% {
+        border-radius: 0;
+    }
+
+    50% {
+        border-radius: 50% 20% / 10% 40%;
+    }
+
+    100% {
+        border-radius: 0;
+    }
+}
+
+/* Sottotitolo Hero (typewriter) */
+.hero-subtitle {
+    font-size: clamp(1.3rem, 3vw, 2rem) !important;
+    font-weight: normal;
+    line-height: 1.4;
+}
+
+/* Centrare titoli sezioni principali */
+#trama h2,
+#gameplay h2,
+#media h2,
+#demo h2,
+#credits h2 {
+    text-align: center;
+}
+
+/* Centrare i paragrafi delle sezioni che lo richiedono */
+#trama p,
+#demo p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 900px;
+}
+
+/* ---- MOBILE: rimuove completamente l'immagine hero sui telefoni ---- */
+@media (max-width: 768px) {
+    .hero-illustration {
+        display: none !important;
+    }
+}
+
+/* ======================= */
+/* MEDIA CAROUSEL          */
+/* ======================= */
+
+.media-carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    padding: 0 3.5rem;
+    overflow: hidden;
+}
+
+.carousel-track {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 1 / 1;
+    overflow: visible;
+}
+
+.carousel-slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
+    transform: scale(0.75);
+    filter: blur(8px);
+}
+
+.carousel-slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(255, 0, 204, 0.3);
+}
+
+/* Active (center) slide */
+.carousel-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1) translateX(0);
+    filter: blur(0);
+    z-index: 3;
+    cursor: pointer;
+}
+
+/* Previous slide (peeking from left) */
+.carousel-slide.prev-slide {
+    opacity: 0.5;
+    pointer-events: none;
+    transform: scale(0.7) translateX(-85%);
+    filter: blur(6px);
+    z-index: 2;
+}
+
+/* Next slide (peeking from right) */
+.carousel-slide.next-slide {
+    opacity: 0.5;
+    pointer-events: none;
+    transform: scale(0.7) translateX(85%);
+    filter: blur(6px);
+    z-index: 2;
+}
+
+/* Navigation arrows */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: #ff00cc;
+    border: 1px solid rgba(255, 0, 204, 0.7);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 12px rgba(255, 0, 204, 0.5);
+    backdrop-filter: blur(6px);
+    transition: opacity 0.2s, transform 0.2s, background 0.2s;
+}
+
+.carousel-nav:hover {
+    opacity: 1;
+    background: rgba(255, 0, 204, 0.15);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav.prev {
+    left: 0;
+}
+
+.carousel-nav.next {
+    right: 0;
+}
+
+/* Carousel indicator dots */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 0, 204, 0.4);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    padding: 0;
+}
+
+.carousel-dot.active {
+    background: #ff00cc;
+    transform: scale(1.25);
+    box-shadow: 0 0 8px rgba(255, 0, 204, 0.6);
+}
+
+.carousel-dot:hover {
+    background: rgba(255, 0, 204, 0.5);
+}
+
+/* Mobile adjustments for carousel */
+@media (max-width: 768px) {
+    .media-carousel {
+        padding: 0 2.5rem;
+    }
+
+    .carousel-track {
+        max-width: 85vw;
+    }
+
+    .carousel-nav {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1rem;
+    }
+
+    .carousel-slide.prev-slide {
+        transform: scale(0.6) translateX(-75%);
+        opacity: 0.3;
+    }
+
+    .carousel-slide.next-slide {
+        transform: scale(0.6) translateX(75%);
+        opacity: 0.3;
+    }
+}
+
+@media (max-width: 480px) {
+    .media-carousel {
+        padding: 0 2rem;
+    }
+
+    .carousel-slide.prev-slide,
+    .carousel-slide.next-slide {
+        opacity: 0.2;
+    }
+}
+
+/* ======================= */
+/* MEDIA MODAL (LIGHTBOX) */
+/* ======================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10003; /* Sopra tutto, inclusi i toggle button */
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+    .modal.open {
+        visibility: visible;
+        opacity: 1;
+    }
+
+.modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#modal-image {
+    max-width: 100%;
+    max-height: 100vh;
+    display: block;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 40px rgba(255, 0, 204, 0.5);
+    transition: transform 0.3s ease;
+}
+
+/* Bottone chiudi */
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 0, 204, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.2s;
+}
+
+    .modal-close:hover {
+        background: #cc00ff;
+    }
+
+/* Frecce di navigazione (simili alla Roadmap) */
+.modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #ff00cc;
+    border: 1px solid #ff00cc;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(255, 0, 204, 0.5);
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+    .modal-nav:hover {
+        background: rgba(255, 0, 204, 0.1);
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    .modal-nav.prev {
+        left: -50px; /* Sposta fuori dal contenuto per desktop */
+    }
+
+    .modal-nav.next {
+        right: -50px; /* Sposta fuori dal contenuto per desktop */
+    }
+
+    .modal-nav.disabled {
+        opacity: 0.25;
+        cursor: default;
+        box-shadow: none;
+    }
+
+/* Media Query per Mobile: Centra le frecce se non c'è spazio laterale */
+@media (max-width: 992px) {
+    .modal-nav.prev {
+        left: 10px;
+    }
+
+    .modal-nav.next {
+        right: 10px;
+    }
+}
+
+/* Stile specifico per le card della sezione Team & Contatti */
+#credits .card {
+    text-align: left;
+}
+
+    /* Nome dipartimento centrato e distanziato dai nomi */
+    #credits .card strong {
+        display: block;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+/* Il pulsante allucinazione e lo switch lingua NON vengono deformati dalla modalità allucinazione */
+html.hallucination-active #hallucination-toggle,
+html.hallucination-active .lang-switcher {
+    filter: none !important;
+    animation: none !important;
+    transform: none !important;
+    position: absolute;
+}
+
+/* ===== TIMELINE STATUS TAGS ===== */
+
+.status-tag {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+}
+
+    .status-tag.completed {
+        background: rgba(0, 255, 120, 0.15);
+        border: 1px solid #00ff66;
+        color: #00ff66;
+    }
+
+    .status-tag.wip {
+        background: rgba(255, 200, 0, 0.15);
+        border: 1px solid #ffcc00;
+        color: #ffcc00;
+    }
+
+/* Stato completato: bordo verde */
+.timeline li.done {
+    border: 1px solid rgba(0, 255, 120, 0.4);
+    box-shadow: 0 0 15px rgba(0, 255, 120, 0.15);
+}
+
+/* Stato WIP: bordo giallo */
+.timeline li.progress {
+    border: 1px solid rgba(255, 220, 0, 0.5);
+    box-shadow: 0 0 15px rgba(255, 220, 0, 0.20);
+}
+
+/* Futuro: bordo più tenue */
+.timeline li.upcoming {
+    opacity: 0.8;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Nasconde completamente la scrollbar orizzontale della timeline */
+.timeline-wrapper {
+    scrollbar-width: none; /* Firefox */
+}
+
+    .timeline-wrapper::-webkit-scrollbar {
+        display: none; /* Chrome, Edge, Safari */
+    }

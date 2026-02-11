@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+
+    <!-- SEO base -->
+    <title>Mushroom Trip - Portfolio</title>
+    <meta name="description" content="Mushroom Trip è un platformer psichedelico tra fallimento e redenzione. Sopravvivi al Percorso Proibito nel Paese degli Allucinotteri.">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://mushroomtrip.neocities.org/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mushroomtrip.neocities.org/">
+    <meta property="og:title" content="Mushroom Trip - Videogame">
+    <meta property="og:description" content="Un viaggio psichedelico tra fallimento e redenzione. Gioca la demo ora!">
+    <meta property="og:image" content="https://i.postimg.cc/KvGvMLFf/image-1.png">
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Mushroom Trip - Videogame">
+    <meta property="twitter:description" content="Platformer psichedelico. Sopravvivi al Percorso Proibito.">
+    <meta property="twitter:image" content="https://i.postimg.cc/KvGvMLFf/image-1.png">
+
+
+    <!-- Librerie esterne -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js" defer></script>
+
+    <!-- Stili -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="lang-switcher">
+            <label for="lang-select" class="sr-only">Lingua:</label>
+            <select id="lang-select" aria-label="Seleziona lingua">
+                <option value="it">Italiano</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <!-- Particelle -->
+        <div id="tsparticles" aria-hidden="true"></div>
+
+        <!-- Pulsante e suono -->
+        <button id="hallucination-toggle" aria-label="Attiva modalità allucinazione">🌀 Allucinazione</button>
+        <audio id="hover-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-quick-jump-arcade-game-239.wav" preload="auto"></audio>
+
+        <!-- SFONDO CON GIF -->
+        <div class="bg-gif" aria-hidden="true">
+            <img src="https://i.postimg.cc/3d01k8r8/polvere-di-fata.gif" class="gif1" alt="" loading="lazy">
+            <img src="https://i.postimg.cc/gwWg9CWY/polvere-di-fata-2.gif" class="gif2" alt="" loading="lazy">
+            <img src="https://i.postimg.cc/QVySN93Y/bong.gif" class="gif3" alt="" loading="lazy">
+            <img src="https://i.postimg.cc/FYtZcM1j/calume-per-la-pace2.gif" class="gif4" alt="" loading="lazy">
+            <img src="https://i.postimg.cc/zHVjS5nk/Occhi-titolo.gif" class="gif5" alt="" loading="lazy">
+            <img src="https://i.postimg.cc/V56Dc93b/cocodrilo.gif" class="gif6" alt="" loading="lazy">
+        </div>
+
+        <!-- HERO -->
+        <!-- NUOVA IMMAGINE HERO -->
+        <img src="https://i.postimg.cc/t4pML9Mw/IMG_6945.png"
+             alt="Personaggio Mushroom Trip che riposa sull'isola volante"
+             class="hero-illustration">
+        <section class="hero-banner">
+
+            <div class="hero-box">
+                <div style="display: flex; justify-content: center; width: 100%;">
+                    <img src="https://i.postimg.cc/hv8HG0yy/A-Loading-01.gif"
+                         alt="Icona funghetto di Mushroom Trip"
+                         style="margin-top: 20px; width: clamp(150px, 40vw, 300px); height: auto; margin-bottom: 1rem;"
+                         loading="lazy">
+                </div>
+
+                <img src="https://i.postimg.cc/KvGvMLFf/image-1.png"
+                     alt="Logo di Mushroom Trip"
+                     style="display: block; margin: 0 auto 0.2rem; width: calc(100% - 20px); max-width: 580px; height: auto; object-fit: cover;"
+                     loading="lazy">
+
+                <p id="typewriter"
+                   class="hero-subtitle"
+                   style="font-size: clamp(1rem, 2vw, 1.5rem); max-width: 80%; text-align: center; margin: auto;">
+                </p>
+
+                <div class="cta">
+                    <a data-i18n="cta-scopri-gioco" href="#trama">Scopri il Gioco</a>
+                    <a data-i18n="cta-play-demo" href="#demo">Play Demo</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRAMA -->
+        <section id="trama" class="reveal">
+            <h2 data-i18n="heading-trama" class="glitch">Trama</h2>
+            <p data-i18n="trama-text">
+                Dopo un rave illegale e un’overdose di psichedelici, ti risvegli nel Paese degli Allucinotteri come un piccolo fungo antropomorfo. Per tornare alla realtà, devi affrontare il Percorso Proibito e spezzare la maledizione musicale che tormenta il villaggio.
+            </p>
+
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/rLSiwEbhkjk"
+                        title="Trailer di gameplay di Mushroom Trip"
+                        frameborder="0"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- GAMEPLAY -->
+        <section id="gameplay" class="reveal">
+            <h2 data-i18n="heading-gameplay" class="glitch">Gameplay &amp; Meccaniche</h2>
+            <div class="grid">
+                <div class="card expandable">
+                    <div class="card-title" data-i18n="gameplay-sanity-title">Gestione Sanità Mentale</div>
+                    <div class="card-desc" data-i18n="gameplay-sanity-desc">Ogni Power-Up ha un malus. Usali con attenzione!</div>
+                </div>
+                <div class="card expandable">
+                    <div class="card-title" data-i18n="gameplay-platform-title">Platforming Preciso</div>
+                    <div class="card-desc" data-i18n="gameplay-platform-desc">Salti calibrati, puzzle ambientali e trappole dinamiche.</div>
+                </div>
+                <div class="card expandable">
+                    <div class="card-title" data-i18n="gameplay-npc-title">NPC e Bonus Permanenti</div>
+                    <div class="card-desc" data-i18n="gameplay-npc-desc">Guaritrice, Ipnotista e Mercante ti aiuteranno (forse).</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MEDIA -->
+        <section id="media" class="reveal">
+            <h2 data-i18n="heading-media" class="glitch">Media &amp; Concept</h2>
+            <div class="media-carousel">
+                <button class="carousel-nav prev" aria-label="Immagine precedente">&#9664;</button>
+                <div class="carousel-track">
+                    <div class="carousel-slide" data-index="0">
+                        <img src="https://i.postimg.cc/Z59r3nQp/Base-Character-Texture-Front.png" alt="Texture frontale del personaggio fungo" loading="lazy">
+                    </div>
+                    <div class="carousel-slide" data-index="1">
+                        <img src="https://i.postimg.cc/QdRcqsLP/Base-Character-Front.png" alt="Render 3D frontale del personaggio fungo" loading="lazy">
+                    </div>
+                    <div class="carousel-slide" data-index="2">
+                        <img src="https://i.postimg.cc/zfKKtM8f/Bong-Character-Front.png" alt="Variante del personaggio con bong al posto della testa" loading="lazy">
+                    </div>
+                    <div class="carousel-slide" data-index="3">
+                        <img src="https://i.postimg.cc/tJSxnGtB/UI-Inventory-Malus.png" alt="Schermata UI dell'inventario dei malus" loading="lazy">
+                    </div>
+                    <div class="carousel-slide" data-index="4">
+                        <img src="images/Magic_Mushroom_Character_Front.png" alt="Personaggio fungo magico - vista frontale" loading="lazy">
+                    </div>
+                    <div class="carousel-slide" data-index="5">
+                        <img src="images/Character_Alcohol_Front.png" alt="Personaggio Alcool - vista frontale" loading="lazy">
+                    </div>
+                    <div class="carousel-slide" data-index="6">
+                        <img src="images/Character_Cannabis_Front.png" alt="Personaggio Cannabis - vista frontale" loading="lazy">
+                    </div>
+                    <div class="carousel-slide" data-index="7">
+                        <img src="images/Character_Cocaine_Front.png" alt="Personaggio Cocaina - vista frontale" loading="lazy">
+                    </div>
+                    <div class="carousel-slide" data-index="8">
+                        <img src="images/Character_Crocodile_Front.png" alt="Personaggio Coccodrillo - vista frontale" loading="lazy">
+                    </div>
+                    <div class="carousel-slide" data-index="9">
+                        <img src="images/image.png" alt="Concept art Mushroom Trip" loading="lazy">
+                    </div>
+                    <div class="carousel-slide" data-index="10">
+                        <img src="images/IMG_0568.png" alt="Concept art Mushroom Trip" loading="lazy">
+                    </div>
+                    <div class="carousel-slide" data-index="11">
+                        <img src="images/IMG_0603.png" alt="Concept art Mushroom Trip" loading="lazy">
+                    </div>
+                </div>
+                <button class="carousel-nav next" aria-label="Immagine successiva">&#9654;</button>
+            </div>
+        </section>
+
+        <!-- DEMO -->
+        <section id="demo" class="reveal">
+            <h2 data-i18n="heading-demo" class="glitch">Demo</h2>
+
+            <p data-i18n="demo-text">
+                Puoi scaricare la demo giocabile direttamente da itch.io.
+            </p>
+
+            <div class="cta">
+                <a href="https://eventhorizonschool.itch.io/mushroom-trip"
+                   target="_blank"
+                   rel="noopener"
+                   data-i18n="demo-download">
+                    Scarica la Demo su itch.io
+                </a>
+            </div>
+        </section>
+
+
+        <!-- CREDITS -->
+        <section id="credits" class="reveal">
+            <h2 data-i18n="heading-credits" class="glitch">Team &amp; Contatti</h2>
+            <div class="grid">
+                <div class="card">
+                    <strong data-i18n="credits-role-gd">Game Design</strong><br>
+                    Riccardo Volpi<br>Lorenzo Porfirione
+                </div>
+                <div class="card">
+                    <strong data-i18n="credits-role-prog">Programming</strong><br>
+                    Michele Grassano<br>Ivan Boniello
+                </div>
+                <div class="card">
+                    <strong data-i18n="credits-role-3d">3D Art</strong><br>
+                    Sergiu Martin<br>Marta Sciuto<br>Nicolò Mancia
+                </div>
+                <div class="card">
+                    <strong data-i18n="credits-role-concept">Concept Art</strong><br>
+                    Antonino Sciliberto<br>Elisa Cernari<br>Rebecca Ferrè
+                </div>
+                <div class="card">
+                    <strong data-i18n="credits-role-sound">Sound Design</strong><br>
+                    Emiliano Gherlanz<br>Gabriele Rinaldi<br>Matteo Cattaneo
+                </div>
+                <div class="card">
+                    <strong data-i18n="credits-role-sp">Aiuti Esterni</strong><br>
+                    Alessio Desiderò<br>Stefano Spotobr<br>Martina Paesani<br>Giulia Timeo<br>Francesca Rizzo<br>Walter Di Martino<br>Gabriele Fraternali<br>Alberto Speziale<br>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="reveal">
+            <h2 data-i18n="heading-faq" class="glitch">Domande Frequenti</h2>
+
+            <div class="faq-item">
+                <button class="faq-question" data-i18n="faq-q1" aria-expanded="false">
+                    Quali sono i requisiti di sistema?
+                </button>
+                <div class="faq-answer">
+                    <p data-i18n="faq-a1">Windows 10 64-bit, CPU dual-core, 8 GB RAM, GPU compatibile DirectX 11 e 2 GB VRAM.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" data-i18n="faq-q2" aria-expanded="false">
+                    Come salvo i progressi?
+                </button>
+                <div class="faq-answer">
+                    <p data-i18n="faq-a2">Il gioco salva automaticamente alla fine di ogni livello. Puoi anche salvare manualmente dal menu principale.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" data-i18n="faq-q3" aria-expanded="false">
+                    Ci sarà il supporto al controller?
+                </button>
+                <div class="faq-answer">
+                    <p data-i18n="faq-a3">Sì, supportiamo XBox, PlayStation e generic USB controller via API SDL2.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROADMAP -->
+        <section id="roadmap" class="reveal">
+            <h2 data-i18n="heading-roadmap" class="roadmap-title glitch">Roadmap di Sviluppo</h2>
+
+            <div class="timeline-container">
+                <button class="timeline-nav prev" aria-label="Scorri indietro">◀</button>
+
+                <div class="timeline-wrapper">
+                    <ul class="timeline">
+                        <li class="done">
+                            <span class="date">
+                                ✔ <span data-i18n="roadmap-jan-label">Gennaio / Febbraio 2025</span>
+                            </span>
+                            <p data-i18n="roadmap-jan">Pre-produzione, definizione concept & lore.</p>
+                            <span class="status-tag completed" data-i18n="roadmap-status-completed">Completato</span>
+                        </li>
+
+                        <li class="done">
+                            <span class="date">
+                                ✔ <span data-i18n="roadmap-mar-label">Marzo / Aprile 2025</span>
+                            </span>
+                            <p data-i18n="roadmap-mar">Inizio produzione con meccaniche di base.</p>
+                            <span class="status-tag completed" data-i18n="roadmap-status-completed">Completato</span>
+                        </li>
+
+                        <li class="done">
+                            <span class="date">
+                                ✔ <span data-i18n="roadmap-may-label">Maggio / Giugno 2025</span>
+                            </span>
+                            <p data-i18n="roadmap-may">Prime build giocabili & creazione del tutorial.</p>
+                            <span class="status-tag completed" data-i18n="roadmap-status-completed">Completato</span>
+                        </li>
+
+                        <li class="done">
+                            <span class="date">
+                                ✔ <span data-i18n="roadmap-jul-label">Luglio / Agosto 2025</span>
+                            </span>
+                            <p data-i18n="roadmap-jul">Sviluppo asset di gioco & risoluzione bug.</p>
+                            <span class="status-tag completed" data-i18n="roadmap-status-completed">Completato</span>
+                        </li>
+
+                        <li class="done">
+                            <span class="date">
+                                ✔ <span data-i18n="roadmap-sep-label">Settembre / Ottobre 2025</span>
+                            </span>
+                            <p data-i18n="roadmap-sep">Revisione documentazione & aggiornamento funzionalità.</p>
+                            <span class="status-tag completed" data-i18n="roadmap-status-completed">Completato</span>
+                        </li>
+
+                        <li class="done">
+                            <span class="date">
+                                ✔ <span data-i18n="roadmap-nov-label">Novembre / Dicembre 2025</span>
+                            </span>
+                            <p data-i18n="roadmap-nov">Produzione Hub Centrale & nuove funzionalità di gioco.</p>
+                            <span class="status-tag completed" data-i18n="roadmap-status-completed">Completato</span>
+                        </li>
+
+                        <li class="progress">
+                            <span class="date">
+                                🟡 <span data-i18n="roadmap-jan2-label">Gennaio / Febbraio 2026</span>
+                            </span>
+                            <p data-i18n="roadmap-jan2">Implementazione asset e sistemi & revisione percorso platform.</p>
+                            <span class="status-tag wip" data-i18n="roadmap-status-wip">In corso</span>
+                        </li>
+
+                        <li class="upcoming">
+                            <span class="date">
+                                ○ <span data-i18n="roadmap-apr-label">Marzo / Aprile 2026</span>
+                            </span>
+                            <p data-i18n="roadmap-apr">Bilanciamento completo & pubblicazione prototipo su Steam.</p>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+                <button class="timeline-nav next" aria-label="Scorri avanti">▶</button>
+            </div>
+        </section>
+
+        <!-- COMMUNITY / DISCORD -->
+        <section id="community" class="reveal">
+            <h2 data-i18n="heading-discord" class="glitch">Unisciti alla Community</h2>
+            <p data-i18n="discord-text">
+                Entra nel server Discord di Mushroom Trip per seguire lo sviluppo, lasciare feedback, trovare altri giocatori e partecipare ai playtest della community.
+            </p>
+
+            <div class="cta">
+                <a href="https://discord.gg/fX8Dcxhegm"
+                   target="_blank"
+                   rel="noopener"
+                   data-i18n="discord-button">
+                    Entra nel server Discord
+                </a>
+            </div>
+        </section>
+
+        <!-- NEWSLETTER -->
+        <section id="newsletter" class="reveal">
+            <h2 data-i18n="heading-newsletter">Iscriviti alla Newsletter</h2>
+            <p data-i18n="newsletter-text">Ricevi aggiornamenti su demo, beta e novità direttamente nella tua casella.</p>
+
+            <form id="newsletter-form"
+                  action="https://formspree.io/f/manbqvvq"
+                  method="POST">
+                <label class="sr-only" for="newsletter-email">Email</label>
+                <input id="newsletter-email" type="email" name="email" placeholder="La tua email" required>
+                <button type="submit" data-i18n="newsletter-button">Iscriviti</button>
+            </form>
+
+            <div class="success-message" data-i18n="newsletter-success" style="display:none">
+                Grazie! Controlla la tua email per confermare l’iscrizione.
+            </div>
+        </section>
+
+        <!-- CTA FINALE -->
+        <div class="cta">
+            <a href="#" data-i18n="cta-wishlist" aria-disabled="true">Wishlist su Steam</a>
+            <a href="mailto:Scrappypattydev@gmail.com" data-i18n="cta-contact">Contattaci</a>
+        </div>
+    </main>
+
+    <footer>
+        <p data-i18n="footer-text">&copy; 2025 Mushroom Trip. Tutti i diritti riservati.</p>
+    </footer>
+
+    <div id="media-modal" class="modal" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Chiudi galleria">✕</button>
+            <img id="modal-image" src="" alt="Media ingrandito">
+
+            <button class="modal-nav prev" aria-label="Immagine precedente">◀</button>
+            <button class="modal-nav next" aria-label="Immagine successiva">▶</button>
+        </div>
+    </div>
+    <!-- Logica custom -->
+    <script src="script.js" defer></script>
+</body>
+</html>
