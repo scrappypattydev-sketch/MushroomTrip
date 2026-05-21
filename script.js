@@ -26,8 +26,8 @@ const i18n = {
         'gameplay-npc-title': 'NPC e Bonus Permanenti',
         'gameplay-npc-desc': 'Guaritrice, Ipnotista e Mercante ti aiuteranno (forse).',
 
-        'demo-text': ' Puoi scaricare la demo giocabile direttamente da itch.io.',
-        'demo-download': 'Scarica la Demo su itch.io',
+        'demo-text': ' Puoi provare la demo direttamente su Steam.',
+        'demo-download': 'Prova la Demo su Steam',
 
         'credits-role-gd': 'Game Design',
         'credits-role-prog': 'Programming',
@@ -99,8 +99,8 @@ const i18n = {
         'gameplay-npc-title': 'NPCs & Permanent Bonuses',
         'gameplay-npc-desc': 'The Healer, Hypnotist and Merchant will help you… maybe.',
 
-        'demo-text': ' You can download the playable demo directly from itch.io.',
-        'demo-download': 'Download the Demo on itch.io',
+        'demo-text': ' You can try the demo directly on Steam.',
+        'demo-download': 'Try the Demo on Steam',
 
 
         'credits-role-gd': 'Game Design',
